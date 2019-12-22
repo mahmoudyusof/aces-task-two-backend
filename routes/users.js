@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
         if(!authenticated) return res.status(400).send("Invalid username or password");
     
         const token = await user.generateAuthToken();
-        res.header('x-auth-token', token).send("Logged successfully");
+        res.header('x-auth-token', token).send("Logged in successfully");
     }catch(e){
         let msg = "Something went wrong. Please try again later";
         if(config.get("DEBUG")) msg = e.message;
