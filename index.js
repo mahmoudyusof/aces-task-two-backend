@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const config = require("config");
 const auth = require('./middleware/auth');
-
+const cors = require('./middleware/cors');
 
 mongoose
   .connect ('mongodb://localhost/tasktwo', {
@@ -18,6 +18,7 @@ const app = express();
 
 // use middlewares
 app.use(express.json());
+app.use(cors);
 
 // require routes
 const usersRouter = require('./routes/users.js');

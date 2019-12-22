@@ -11,6 +11,7 @@ router.post('/register', async (req, res) => {
     try{
         let user = await User.findOne({email: req.body.email});
         if(user) return res.status(400).send(`User with email '${req.body.email}' already exists`);
+        
         user = new User(_.pick(req.body, ['name', 'email']));
         const salt = await bcrypt.genSalt(10);
         const crypted = await bcrypt.hash(req.body.password, salt);
