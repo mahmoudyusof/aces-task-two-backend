@@ -17,6 +17,7 @@ mongoose
 const app = express();
 
 // use middlewares
+app.use(express.static(__dirname + '/build'));
 app.use(express.json());
 app.use(cors);
 
