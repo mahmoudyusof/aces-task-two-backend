@@ -4,7 +4,7 @@
   "description": "authintication system",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --watchAll --verbose",
     "start": "node index.js",
     "watch": "nodemon index.js"
   },
@@ -20,6 +20,8 @@
     "mongoose": "^5.8.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.2"
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2",
+    "supertest": "^4.0.2"
   }
 }

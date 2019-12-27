@@ -1,6 +1,6 @@
 {
     "PRIVATE_KEY": "83557aa1401a17c9928f374731bde8d3",
     "PORT": "8000",
-    "DB_CONNECTION": "",
+    "DB_CONNECTION": "mongodb://localhost/tasktwo",
     "DEBUG": "TRUE"
 }

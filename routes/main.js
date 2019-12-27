@@ -2,7 +2,7 @@ const router = require("express").Router();
 const admin = require("../middleware/admin");
 const { User } = require("../models/User");
 
-router.get('/admin/only', admin, async (req, res) =>{
+router.get('/admin-only', admin, async (req, res) =>{
     try{
         console.log(req.user);
         const users = await User.find().select(['name', 'email', 'role', '-_id']);
@@ -12,7 +12,7 @@ router.get('/admin/only', admin, async (req, res) =>{
     }
 });
 
-router.get('/auth/only', (req, res) => {
+router.get('/auth-only', (req, res) => {
     res.send(`Hello, ${req.user.name} @ <${req.user.email}>`);
 });
 

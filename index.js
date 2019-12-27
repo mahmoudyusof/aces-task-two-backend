@@ -5,11 +5,11 @@ const auth = require('./middleware/auth');
 const cors = require('./middleware/cors');
 
 mongoose
-  .connect ('mongodb://localhost/tasktwo', {
+  .connect (config.get("DB_CONNECTION"), {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then (() => console.log ('Connected to database.'))
+  .then (() => console.log (`Connected to ${config.get("DB_CONNECTION")}.`))
   .catch (err => console.log (err));
 
 
@@ -27,7 +27,9 @@ const main = require('./routes/main');
 
 // use routes
 app.use('/api/auth', usersRouter);
-app.use('/api', auth, main);
+app.use('/api/main', auth, main);
 
 // listen
-app.listen(config.get("PORT"), () => console.log(`listening on localhost:${config.get("PORT")}...`));
+const server = app.listen(config.get("PORT"), () => console.log(`listening on localhost:${config.get("PORT")}...`));
+
+module.exports = server;

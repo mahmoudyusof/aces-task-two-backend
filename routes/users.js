@@ -6,7 +6,7 @@ const _ = require("lodash");
 
 router.post('/register', async (req, res) => {
     const err = userError(req.body);
-    if(err) return res.status(400).send(err);
+    if(err && Object.keys(err).length) return res.status(400).send(err);
 
     try{
         let user = await User.findOne({email: req.body.email});

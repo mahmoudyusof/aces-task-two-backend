@@ -12,9 +12,9 @@ const userSchema = new mongoose.Schema({
     role: {type: String, minlength: 3, maxlength: 255, default: "guest"}
 });
 
-userSchema.methods.generateAuthToken = async function(){
-    const token = await jwt.sign({
-        id: this._id,
+userSchema.methods.generateAuthToken = function(){
+    const token = jwt.sign({
+        _id: this._id,
         name: this.name,
         email: this.email,
         role: this.role
